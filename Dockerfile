@@ -8,7 +8,7 @@ LABEL summary="${SUMMARY}" \
 ### Required labels above - recommended below
       url="https://github.com/ilfkrylov/openshift-utils" \
       help="For more information visit https://github.com/ilfkrylov/openshift-utils" \
-      run='docker run -itd --name ubuntu -u default openshift-utils' \
+      run='docker run -itd --name ubuntu -u 123456 ilfkrylov/openshift-utils' \
       io.k8s.description="${DESCRIPTION}" \
       io.k8s.display-name="${SUMMARY}" \
       io.openshift.expose-services="" \
@@ -22,6 +22,7 @@ RUN mkdir -p ${APP_ROOT} && \
     chmod -R u+x /usr/local/bin && \
     chgrp -R 0 ${APP_ROOT} && \
     chmod -R g=u ${APP_ROOT} /etc/passwd
+RUN chmod 777 /usr/local/bin/run
 
 ### Install utils
 RUN apk update
