@@ -24,7 +24,9 @@ RUN mkdir -p ${APP_ROOT} && \
     chmod -R g=u ${APP_ROOT} /etc/passwd
 
 ### Install utils
-RUN apk add netcat
+RUN apk update
+RUN apk add busybox-extras
+RUN apk add netcat-openbsd
 
 ### Containers should NOT run as root as a good practice
 USER 10001
